@@ -4,7 +4,7 @@ import Server from '../server';
 
 const expect = chai.expect;
 
-describe('Examples', () => {
+describe('Products', () => {
   it('should get all products', () =>
     request(Server)
       .get('/api/v1/products')
