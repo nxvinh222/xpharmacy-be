@@ -53,6 +53,9 @@ definitions:
       name:
         type: string
         example: vinh nguyen
+      cart:
+        type: array
+        example: [123, 456]
   ProductBody:
     type: object
     title: Products
@@ -187,6 +190,35 @@ paths:
       responses:
         200: 
           description: Return Product's info
+  /cart:
+    get:
+      tags:
+        - Cart
+      description: View cart
+      responses:
+        200:
+          description: Return user's cart
+    post:
+      tags:
+        - Cart
+      description: add to cart
+      parameters:
+        - name: user
+          in: body
+          description: Add item to cart
+          required: true
+          schema: 
+            type: object
+            title: product
+            required:
+              - id
+            properties:
+              id: 
+                type: string
+                example: 123
+      responses:
+        200:
+          description: Add success
   /examples:
     get:
       tags:
