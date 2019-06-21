@@ -30,7 +30,7 @@ describe('Users', () => {
           .equal('Nam Nguyen');
       }));
 
-  it('should get an example by id', () =>
+  it('should get an user by id', () =>
     request(Server)
       .get('/api/v1/users/1')
       .expect('Content-Type', /json/)
