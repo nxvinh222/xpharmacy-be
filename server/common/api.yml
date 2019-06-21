@@ -85,6 +85,8 @@ definitions:
 
 
 paths:
+  # User
+  #*******************************
   /users:
     get:
       tags:
@@ -160,6 +162,8 @@ paths:
       response:
         200:
           description: Signup success
+  # Product
+  #*******************************
   /products:
     get:
       tags:
@@ -190,6 +194,8 @@ paths:
       responses:
         200: 
           description: Return Product's info
+  # Cart
+  #*******************************
   /cart:
     get:
       tags:
