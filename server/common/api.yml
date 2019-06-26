@@ -225,6 +225,28 @@ paths:
       responses:
         200:
           description: Add success
+  /cart/checkout:
+    post:
+      tags:
+        - cart
+      description: checkout
+      parameters:
+        - name: user
+          in: body
+          description: Checkout info
+          required: true
+          schema: 
+            type: object
+            title: product
+            required:
+              
+            properties:
+              id: 
+                type: string
+                example: 123  
+      responses:
+        200:
+          description: order complete
   /examples:
     get:
       tags:
