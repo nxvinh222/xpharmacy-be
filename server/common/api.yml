@@ -40,7 +40,7 @@ definitions:
         example: ho va ten
       password:
         type: string
-        example: 123456
+        example: "123"
       age:
         type: number
         example: 3000
@@ -53,9 +53,9 @@ definitions:
       name:
         type: string
         example: vinh nguyen
-      cart:
-        type: array
-        example: [123, 456]
+      # cart:
+      #   type: array
+      #   example: [123, 456]
   ProductBody:
     type: object
     title: Products
@@ -95,6 +95,20 @@ paths:
       response:
         200:
           description: Returns All Users
+    post:
+      tags:
+        - Users
+      description: Signup user 
+      parameters:
+        - name: user
+          in: body
+          description: Signup user
+          required: true
+          schema: 
+            $ref: "#/definitions/UserBody"
+      response:
+        200:
+          description: Signup success
   /users/{id}:
     get:
       tags:
@@ -121,21 +135,22 @@ paths:
           description: Return User's Info
         404:
           description: User not found
-  /signup:
-    post:
-      tags:
-        - Users
-      description: Signup user 
-      parameters:
-        - name: user
-          in: body
-          description: an user
-          required: true
-          schema: 
-            $ref: "#/definitions/UserBody"
-      response:
-        200:
-          description: Signup success
+   
+  # /signup:
+  #   post:
+  #     tags:
+  #       - Users
+  #     description: Signup user 
+  #     parameters:
+  #       - name: user
+  #         in: body
+  #         description: an user
+  #         required: true
+  #         schema: 
+  #           $ref: "#/definitions/UserBody"
+  #     response:
+  #       200:
+  #         description: Signup success
   /login:
     post:
       tags:

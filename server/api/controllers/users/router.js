@@ -4,4 +4,5 @@ import * as express from 'express';
 
 export default express
   .Router()
-  .get('/', UserController.all);
+  .get('/', UserController.all)
+  .post('/', UserController.create);
