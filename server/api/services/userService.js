@@ -9,6 +9,14 @@ class UserService {
 		})
 	}
 
+	byId(id) {
+		return new Promise((resolve, rejects) => {
+			const user = User.findById(id);
+			resolve(user);
+		})
+
+	}
+
 	create(info) {
 		return new Promise((resolve, rejects) => {
 			const user = User.create(info);
@@ -17,6 +25,7 @@ class UserService {
 			resolve(user);			
 		})
 	}
+
 
 
 

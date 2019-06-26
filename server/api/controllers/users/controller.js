@@ -9,11 +9,19 @@ class UserController {
 		})
 	}
 
+	byId(req, res) {
+		userService.byId(req.params.id).then(r => {
+			if (r) res.json(r);
+			else res.status(404).end();
+		})
+		.catch(err => res.json({ success: false, err }))
+	}
+
 	create(req, res) {
 		userService.create(req.body).then(r => {
 			res.json(r)
 		})
-		.catch(err => res.json({ success: false, err}) )
+		.catch(err => res.json({ success: false, err }) )
 	}
 }
 

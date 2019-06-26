@@ -114,6 +114,12 @@ paths:
       tags:
         - Users
       description: Get User's Info(only 1)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of user
+          type: string
       response:
         200:
           description: Return User's Info
