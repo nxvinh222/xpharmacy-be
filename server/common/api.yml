@@ -189,7 +189,7 @@ paths:
     get:
       tags:
         - Products
-      description: Find all product
+      description: Find all products
       responses:
         200:
           description: Return all Products
