@@ -12,7 +12,7 @@ describe('Cart', () => {
       .then(r => {
         expect(r.body)
           .to.be.an('array')
-          .of.length(1);
+          .of.length(0);
       }));
 
   it('should add a new product', () =>
