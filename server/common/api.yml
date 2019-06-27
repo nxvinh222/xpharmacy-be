@@ -131,12 +131,37 @@ paths:
         - Users
       description: Edit User's Info
       parameters:
-        - name: user
+        - name: user's info
           in: body
           description: an user
-          required: true
           schema: 
-            $ref: "#/definitions/UserBody"
+            type: object
+            title: users
+            properties:
+              username:
+                type: string
+                example: ho va ten
+              password:
+                type: string
+                example: "123"
+              age:
+                type: number
+                example: 3000
+              phone:
+                type: string
+                example: 0199285591
+              email:
+                type: string
+                example: pharmacy@gmail.com
+              name:
+                type: string
+                example: vinh nguyen
+        
+        - name: id
+          in: path
+          required: true
+          description: The id of user
+          type: string
       response:
         200:
           description: Return User's Info
@@ -161,7 +186,7 @@ paths:
   /login:
     post:
       tags:
-        - Users 
+        - Auth
       description: Login
       parameters:
         - name: user

@@ -18,6 +18,14 @@ class UserService {
 
 	}
 
+	update(id) {
+		return new Promise((resolve, reject) => {
+			const user = User.findById(id);
+			resolve(user);
+		})
+	}
+
+
 	create(info) {
 		return new Promise((resolve, rejects) => {
 			const user = User.create(info);

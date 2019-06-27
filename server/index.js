@@ -3,7 +3,7 @@ import Server from './common/server';
 import routes from './routes';
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb+srv://divinevinh:vanthao1@cluster0-scqka.mongodb.net/test?retryWrites=true&w=majority', err =>{
+mongoose.connect('mongodb+srv://divinevinh:ug6y6crKwUP0Fsv0@cluster0-scqka.mongodb.net/test?retryWrites=true&w=majority', err =>{
     if (err) console.log(err)
     else
     console.log("CONNECT SUCCESS!")
