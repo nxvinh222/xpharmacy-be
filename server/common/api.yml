@@ -95,6 +95,7 @@ paths:
       response:
         200:
           description: Returns All Users
+    
     post:
       tags:
         - Users

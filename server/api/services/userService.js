@@ -7,6 +7,7 @@ class UserService {
 			const users = User.find();
 			resolve(users);
 		})
+		// User.find();
 	}
 
 	byId(id) {
