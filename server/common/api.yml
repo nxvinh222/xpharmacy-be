@@ -238,6 +238,12 @@ paths:
       tags: 
         - Products
       description: Get a product's info
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: id of product
       responses:
         200: 
           description: Return Product's info
