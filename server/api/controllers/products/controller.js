@@ -20,5 +20,13 @@ export class ProductController {
         .json(r)
     );
   }
+
+  delete(req,res){
+    ProductService.delete(req.params.id).then(r => {
+      if (r) res.send("Delete success");
+      else res.status(404).end();
+    })
+  }
+
 }
 export default new ProductController();

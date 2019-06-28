@@ -25,7 +25,13 @@ class ProductService {
 		})
 	}
 
-
+	delete(id){
+		return new Promise ((resolve, rejects) =>{
+			const product = Product.findByIdAndDelete(id);
+			console.log(product);
+			resolve(product);
+		})
+	}
 
 
 }

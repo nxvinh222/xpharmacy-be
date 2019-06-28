@@ -247,6 +247,21 @@ paths:
       responses:
         200: 
           description: Return Product's info
+    delete:
+      tags:
+        - Products
+      description: Delete a product
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: Delete success
+        404:
+          description: Product not found
+      
   # Cart
   #*******************************
   /cart:
