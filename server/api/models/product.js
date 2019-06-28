@@ -21,6 +21,11 @@ const ProductSchema = new Schema({
     category: {
         type: String,
         required:true
+    },
+    sold: {
+        type: Number,
+        default: 0,
+        required: true
     }
 })
 
