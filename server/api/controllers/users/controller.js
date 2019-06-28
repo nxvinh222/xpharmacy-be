@@ -1,11 +1,12 @@
 
 import userService from '../../services/userService';
+import bcrypt from 'bcrypt';
 
 class UserController {
 	all(req, res) {
 		userService.all().then(r => {
 			if (r) res.json(r);
-			else res.status(404).end();
+			else res.json({ success: false });
 		})
 	}
 
@@ -29,11 +30,14 @@ class UserController {
 				userFound.save();
 				res.json(userFound);
 			}
-			else res.status(404).end();
+			else res.json({ success: false });
 		})
 	}
 
 	create(req, res) {
+		const { password } = req.body;
+		const hashPassword = bcrypt.hashSync(password, 12);
+		req.body.password = hashPassword;
 		userService.create(req.body).then(r => {
 			res.json(r)
 		})
