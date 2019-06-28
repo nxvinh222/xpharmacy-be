@@ -21,7 +21,6 @@ class ProductService {
 		return new Promise((resolve, rejects) => {
 			const product = Product.create(info);
 			console.log(info);
-			// if (err) rejects(err);
 			resolve(product);			
 		})
 	}
