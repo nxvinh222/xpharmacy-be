@@ -12,7 +12,7 @@ describe('Users', () => {
       .then(r => {
         expect(r.body)
           .to.be.an('array')
-          .of.length(0);
+          .of.length(4);
       }));
 
   it('should add a new user', () =>

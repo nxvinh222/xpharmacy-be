@@ -5,4 +5,5 @@ export default express
   .Router()
   .get('/', ProductController.all)
   .get('/:id', ProductController.byId)
-  .post('/', ProductController.create);
+  .post('/', ProductController.create)
+  .delete('/:id',ProductController.delete);
