@@ -9,7 +9,7 @@ class AuthController {
                 // console.log(password);
                 if (bcrypt.compareSync(password, userFound.password))
                 {
-                    // req.session.user = { username: username, id: userFound._id, name: userFound.name }
+                    req.session.user = { username: username, id: userFound._id, name: userFound.name }
                     res.json({ success: true, message: "Login success"})
                 }
                 else res.json({ success: false, message: "wrong password"})
