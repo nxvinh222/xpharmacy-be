@@ -14,11 +14,14 @@
     "lint:fix": "eslint --fix -c .eslintrc.json {server,test}/**"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
+    "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.4",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "mongoose": "^5.5.15",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.6.1",
     "pino": "^5.12.2",
     "swagger-express-middleware": "^2.0.2"
   },

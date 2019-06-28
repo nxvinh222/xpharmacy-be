@@ -40,7 +40,7 @@ definitions:
         example: ho va ten
       password:
         type: string
-        example: 123456
+        example: "123"
       age:
         type: number
         example: 3000
@@ -53,9 +53,9 @@ definitions:
       name:
         type: string
         example: vinh nguyen
-      cart:
-        type: array
-        example: [123, 456]
+      # cart:
+      #   type: array
+      #   example: [123, 456]
   ProductBody:
     type: object
     title: Products
@@ -95,11 +95,32 @@ paths:
       response:
         200:
           description: Returns All Users
+    
+    post:
+      tags:
+        - Users
+      description: Signup user 
+      parameters:
+        - name: user
+          in: body
+          description: Signup user
+          required: true
+          schema: 
+            $ref: "#/definitions/UserBody"
+      response:
+        200:
+          description: Signup success
   /users/{id}:
     get:
       tags:
         - Users
       description: Get User's Info(only 1)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of user
+          type: string
       response:
         200:
           description: Return User's Info
@@ -110,36 +131,62 @@ paths:
         - Users
       description: Edit User's Info
       parameters:
-        - name: user
+        - name: user's info
           in: body
           description: an user
-          required: true
           schema: 
-            $ref: "#/definitions/UserBody"
+            type: object
+            title: users
+            properties:
+              username:
+                type: string
+                example: ho va ten
+              password:
+                type: string
+                example: "123"
+              age:
+                type: number
+                example: 3000
+              phone:
+                type: string
+                example: 0199285591
+              email:
+                type: string
+                example: pharmacy@gmail.com
+              name:
+                type: string
+                example: vinh nguyen
+        
+        - name: id
+          in: path
+          required: true
+          description: The id of user
+          type: string
       response:
         200:
           description: Return User's Info
         404:
           description: User not found
-  /signup:
-    post:
-      tags:
-        - Users
-      description: Signup user 
-      parameters:
-        - name: user
-          in: body
-          description: an user
-          required: true
-          schema: 
-            $ref: "#/definitions/UserBody"
-      response:
-        200:
-          description: Signup success
+   
+  # /signup:
+  #   post:
+  #     tags:
+  #       - Users
+  #     description: Signup user 
+  #     parameters:
+  #       - name: user
+  #         in: body
+  #         description: an user
+  #         required: true
+  #         schema: 
+  #           $ref: "#/definitions/UserBody"
+  #     response:
+  #       200:
+  #         description: Signup success
   /login:
     post:
       tags:
-        - Users 
+        - Auth
       description: Login
       parameters:
         - name: user
@@ -168,7 +215,7 @@ paths:
     get:
       tags:
         - Products
-      description: Find all product
+      description: Find all products
       responses:
         200:
           description: Return all Products

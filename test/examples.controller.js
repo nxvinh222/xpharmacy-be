@@ -13,6 +13,7 @@ describe('Examples', () => {
         expect(r.body)
           .to.be.an.an('array')
           .of.length(2);
+        
       }));
 
   it('should add a new example', () =>
