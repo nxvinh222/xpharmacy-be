@@ -11,8 +11,7 @@ describe('Products', () => {
       .expect('Content-Type', /json/)
       .then(r => {
         expect(r.body)
-          .to.be.an('array')
-          .of.length(0);
+          .to.be.an('array');
       }));
 
   it('should add a new product', () =>
@@ -22,7 +21,8 @@ describe('Products', () => {
         name: 'Bao cao su',
         price: '100',
         info: 'Tranh thai an toan',
-        image: 'https://vn-test-11.slatic.net/p/5/bao-cao-su-durex-kingtex-3-bao-3716-8741962-c8f1bba28b808018fbb9d6e75be1da7a.jpg'
+        image: 'https://vn-test-11.slatic.net/p/5/bao-cao-su-durex-kingtex-3-bao-3716-8741962-c8f1bba28b808018fbb9d6e75be1da7a.jpg',
+        category: 'Sex'
         })
       .expect('Content-Type', /json/)
       .then(r => {
@@ -39,11 +39,14 @@ describe('Products', () => {
         expect(r.body)
           .to.have.property('image')
           .equal('https://vn-test-11.slatic.net/p/5/bao-cao-su-durex-kingtex-3-bao-3716-8741962-c8f1bba28b808018fbb9d6e75be1da7a.jpg');
+        expect(r.body)
+          .to.have.property('category')
+          .equal('Sex');
       }));
 
   it('should get a product by id', () =>
     request(Server)
-      .get('/api/v1/products/1')
+      .get('/api/v1/products/5d160a41d2ecab2258be0085')
       .expect('Content-Type', /json/)
       .then(r => {
         expect(r.body)

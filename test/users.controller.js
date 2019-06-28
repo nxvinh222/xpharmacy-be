@@ -11,8 +11,7 @@ describe('Users', () => {
       .expect('Content-Type', /json/)
       .then(r => {
         expect(r.body)
-          .to.be.an('array')
-          .of.length(4);
+          .to.be.an('array');
       }));
 
   it('should add a new user', () =>
