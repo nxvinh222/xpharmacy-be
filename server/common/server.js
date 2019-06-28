@@ -4,6 +4,8 @@ import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as os from 'os';
 import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import mongoose from 'mongoose';
 
 import swaggerify from './swagger';
 
@@ -24,6 +26,25 @@ export default class ExpressServer {
     );
     app.use(cookieParser(process.env.SESSION_SECRET));
     app.use(Express.static(`${root}/public`));
+    //session
+    app.use(session({
+      secret: "worthy", 
+      saveUninitialized: false,
+      resave: false,
+      cookie: {
+          maxAge: 1000 * 60 * 60 * 24 * 7
+      }
+  }))
+    //********* */
+  
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
+    mongoose.connect('mongodb+srv://divinevinh:ug6y6crKwUP0Fsv0@cluster0-scqka.mongodb.net/test?retryWrites=true&w=majority', err =>{
+    if (err) console.log(err)
+    else
+    console.log("CONNECT SUCCESS!")
+});
+
   }
 
   router(routes) {
