@@ -19,10 +19,11 @@ describe('Products', () => {
       .post('/api/v1/products')
       .send({
         name: 'Bao cao su',
-        price: '100',
+        price: 100,
         info: 'Tranh thai an toan',
         image: 'https://vn-test-11.slatic.net/p/5/bao-cao-su-durex-kingtex-3-bao-3716-8741962-c8f1bba28b808018fbb9d6e75be1da7a.jpg',
-        category: 'Sex'
+        category: 'Sex',
+        sold: 10000
         })
       .expect('Content-Type', /json/)
       .then(r => {
@@ -32,7 +33,7 @@ describe('Products', () => {
           .equal('Bao cao su');
         expect(r.body)
           .to.have.property('price')
-          .equal('100');
+          .equal(100);
         expect(r.body)
           .to.have.property('info')
           .equal('Tranh thai an toan');
@@ -41,7 +42,10 @@ describe('Products', () => {
           .equal('https://vn-test-11.slatic.net/p/5/bao-cao-su-durex-kingtex-3-bao-3716-8741962-c8f1bba28b808018fbb9d6e75be1da7a.jpg');
         expect(r.body)
           .to.have.property('category')
-          .equal('Sex');
+          .equal('Sex')
+        expect(r.body)
+          .to.have.property('sold')
+          .equal(10000);
       }));
 
   it('should get a product by id', () =>
