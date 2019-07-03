@@ -15,6 +15,21 @@ const app = new Express();
 
 export default class ExpressServer {
   constructor() {
+    app.use((req, res, next) => {
+      res.setHeader("X-Frame-Options", "ALLOWALL");
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+      res.setHeader(
+        "Access-Control-Allow-Methods",
+        "POST, GET, PUT, DELETE, OPTIONS"
+      );
+      res.setHeader("Access-Control-Allow-Credentials", true);
+      res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+      );
+      next();
+    });
+
     const root = path.normalize(`${__dirname}/../..`);
     app.set('appPath', `${root}client`);
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || '100kb' }));
