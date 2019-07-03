@@ -6,6 +6,7 @@ import * as os from 'os';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import swaggerify from './swagger';
 
@@ -15,20 +16,6 @@ const app = new Express();
 
 export default class ExpressServer {
   constructor() {
-    app.use((req, res, next) => {
-      res.setHeader("X-Frame-Options", "ALLOWALL");
-      res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-      res.setHeader(
-        "Access-Control-Allow-Methods",
-        "POST, GET, PUT, DELETE, OPTIONS"
-      );
-      res.setHeader("Access-Control-Allow-Credentials", true);
-      res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Authorization, Origin, X-Requested-With, Content-Type, Accept"
-      );
-      next();
-    });
 
     const root = path.normalize(`${__dirname}/../..`);
     app.set('appPath', `${root}client`);
@@ -41,6 +28,7 @@ export default class ExpressServer {
     );
     app.use(cookieParser(process.env.SESSION_SECRET));
     app.use(Express.static(`${root}/public`));
+    app.use(cors({origin: 'http://localhost:3000'}));
     //session
     app.use(session({
       secret: "worthy", 
