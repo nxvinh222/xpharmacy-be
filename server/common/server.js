@@ -28,7 +28,7 @@ export default class ExpressServer {
     );
     app.use(cookieParser(process.env.SESSION_SECRET));
     app.use(Express.static(`${root}/public`));
-    app.use(cors({origin: 'http://localhost:3000'}));
+    // app.use(cors({origin: 'http://localhost:3000'}));
     //session
     app.use(session({
       secret: "worthy", 
