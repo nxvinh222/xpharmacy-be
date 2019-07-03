@@ -81,6 +81,9 @@ definitions:
       category:
         type: string
         example: skincare
+      sold:
+        type: number
+        example: 12000
       
 
 
