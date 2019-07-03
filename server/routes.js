@@ -15,4 +15,8 @@ export default function routes(app) {
   app.use('/api/v1/users', userRouter);
   app.use('/api/v1/login',authRouter);
   app.use('/api/v1/products', productRouter);
+  // app.get('/api/v1/login', (req, res) => {
+  //   res.json({a:"aaaa"});
+    
+  // });
 }

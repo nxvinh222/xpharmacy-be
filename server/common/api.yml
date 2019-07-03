@@ -187,6 +187,13 @@ paths:
   #       200:
   #         description: Signup success
   /login:
+    get: 
+      tags:
+        - Auth
+      description: Login
+      response:
+        200:
+          description: huhu
     post:
       tags:
         - Auth
