@@ -84,6 +84,43 @@ definitions:
       sold:
         type: number
         example: 12000
+  OrderBody:
+    type: object
+    title: Sell products
+    required:
+      - products
+      - name
+      - username
+      - phone
+      - address
+      - date
+      - total
+      - status
+    properties:
+      products:
+        type: array
+        example: []
+      name:
+        type: string
+        example: Vinh Nguyen
+      username:
+        type: string
+        example: mindx
+      phone:
+        type: number
+        example: 0912345678
+      address:
+        type: string
+        example: 454 De La Thanh
+      date:
+        type: date
+        example: 12/7/2019
+      total:
+        type: number
+        example: 10000
+      status:
+        type: string
+        example: Delivering
       
 
 
@@ -202,13 +239,19 @@ paths:
   #       200:
   #         description: Signup success
   /login:
-    get: 
+    get:
       tags:
         - Auth
-      description: Login
-      responses:
+      description: get user's info
+      parameters:
+        - name: id
+          in: path
+          description: id of user
+          type: string
+      response:
         200:
-          description: huhu
+          description: Return User's Info
+          
     post:
       tags:
         - Auth
@@ -340,6 +383,61 @@ paths:
       responses:
         200:
           description: order complete
+
+# Order
+#*******************************
+  /orders:
+    get:
+      tags:
+        - Orders
+      description: Get all orders
+      responses:
+        200:
+          description: Returns all orders
+    post:
+      tags:
+        - Orders
+      description: Create a new order
+      parameters:
+        - name: user
+          in: body
+          description: create an order
+          required: true
+          schema: 
+            $ref: "#/definitions/OrderBody"
+      responses:
+        200:
+          description: Order success
+  /orders/{id}:
+    get:
+      tags: 
+        - Orders
+      description: Get an order
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: id of user
+      responses:
+        200: 
+          description: Return an Order
+    delete:
+      tags:
+        - Orders
+      description: Delete an order
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: id of an order
+      responses:
+        200:
+          description: Delete success
+        404:
+          description: Order not found
+
   /examples:
     get:
       tags:
