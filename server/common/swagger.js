@@ -27,18 +27,21 @@ export default function(app, routes) {
       )
     );
 
-    app.use(
-      mw.parseRequest({
-        // Configure the cookie parser to use secure cookies
-        cookie: {
-          secret: process.env.SESSION_SECRET,
-        },
-        // Don't allow JSON content over 100kb (default is 1mb)
-        json: {
-          limit: process.env.REQUEST_LIMIT,
-        },
-      })
-    );
+    // app.use(
+    //   mw.parseRequest({
+    //     // Configure the cookie parser to use secure cookies
+    //     cookie: {
+    //       secret: process.env.SESSION_SECRET,
+    //     },
+    //     // Don't allow JSON content over 100kb (default is 1mb)
+    //     json: {
+    //       limit: process.env.REQUEST_LIMIT,
+    //     },
+    //     multipart: {
+    //       dest: './public/images'
+    //     }
+    //   })
+    // );
 
     // These two middleware don't have any options (yet)
     app.use(mw.CORS(), mw.validateRequest());

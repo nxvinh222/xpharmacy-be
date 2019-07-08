@@ -95,7 +95,7 @@ paths:
       tags:
         - Users
       description: Fetch All User
-      response:
+      responses:
         200:
           description: Returns All Users
     
@@ -110,9 +110,24 @@ paths:
           required: true
           schema: 
             $ref: "#/definitions/UserBody"
-      response:
+      responses:
         200:
           description: Signup success
+  /imageUploads:
+    post:
+      tags:
+        - Users
+      description: Get picture's link
+      parameters:
+        - name: file
+          in: formData
+          description: file to upload
+          required: false
+          type: file
+      responses:
+        201:
+          description: get picture link
+        
   /users/{id}:
     get:
       tags:
@@ -124,7 +139,7 @@ paths:
           required: true
           description: The id of user
           type: string
-      response:
+      responses:
         200:
           description: Return User's Info
         404:
@@ -165,7 +180,7 @@ paths:
           required: true
           description: The id of user
           type: string
-      response:
+      responses:
         200:
           description: Return User's Info
         404:
@@ -191,7 +206,7 @@ paths:
       tags:
         - Auth
       description: Login
-      response:
+      responses:
         200:
           description: huhu
     post:
@@ -216,7 +231,7 @@ paths:
               password:
                 type: string
                 example: 123456
-      response:
+      responses:
         200:
           description: Signup success
   # Product
