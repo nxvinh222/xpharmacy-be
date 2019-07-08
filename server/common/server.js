@@ -6,6 +6,7 @@ import * as os from 'os';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import swaggerify from './swagger';
 
@@ -15,6 +16,7 @@ const app = new Express();
 
 export default class ExpressServer {
   constructor() {
+
     const root = path.normalize(`${__dirname}/../..`);
     app.set('appPath', `${root}client`);
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || '100kb' }));
@@ -26,6 +28,13 @@ export default class ExpressServer {
     );
     app.use(cookieParser(process.env.SESSION_SECRET));
     app.use(Express.static(`${root}/public`));
+    // app.use(cors({origin: 'http://localhost:3000'}));
+    
+    // app.use(function(req, res, next) {
+    //   res.header("Access-Control-Allow-Origin", "*");
+    //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //   next();
+    // });
     //session
     app.use(session({
       secret: "worthy", 
