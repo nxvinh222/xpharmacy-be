@@ -19,6 +19,14 @@ class AuthController {
         })
         // .catch(err => res.json({ success: false, err: "can't find username"}))
     }
+
+    GetInfo(req, res) {
+        const { username } = req.body;
+        authService.byUsername(username).then(r => {
+            if (r) res.json(r);
+            else res.status(404).end();
+        })
+    }
 }
 
 export default new AuthController();

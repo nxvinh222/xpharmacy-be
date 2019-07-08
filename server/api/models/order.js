@@ -1,0 +1,34 @@
+import { Schema, model, SchemaTypes } from "mongoose";
+
+
+const OrderSchema = new Schema({
+	products: [{ type: Schema.Types.ObjectId, ref: 'product' }],
+    name: {
+        type: String,
+        required: true
+    },
+    username: { type: Schema.Types.ObjectId, ref: 'user' },
+    phone: {
+        type: String,
+        required:true
+    },
+    address: {
+        type: String,
+        required:true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    total: {
+        type: Number,
+        required: true
+    },
+    status: {
+        type: String,
+        required:true
+    }
+})
+
+
+export default model('Order', OrderSchema)
