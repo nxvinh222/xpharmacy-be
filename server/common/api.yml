@@ -224,7 +224,6 @@ paths:
   #       200:
   #         description: Signup success
   /login:
-<<<<<<< HEAD
     get:
       tags:
         - Auth
@@ -238,15 +237,6 @@ paths:
         200:
           description: Return User's Info
           
-=======
-    get: 
-      tags:
-        - Auth
-      description: Login
-      response:
-        200:
-          description: huhu
->>>>>>> 141cea59dd3a319981f4992a0bf53a457aaac380
     post:
       tags:
         - Auth
