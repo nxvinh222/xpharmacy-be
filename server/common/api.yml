@@ -90,7 +90,6 @@ definitions:
     required:
       - products
       - name
-      - username
       - phone
       - address
       - date
