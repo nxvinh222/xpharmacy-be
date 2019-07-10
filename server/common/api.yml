@@ -237,7 +237,7 @@ paths:
   #     response:
   #       200:
   #         description: Signup success
-  /login:
+  /auth:
     get:
       tags:
         - Auth
@@ -276,6 +276,36 @@ paths:
       responses:
         200:
           description: Signup success
+  
+
+  /auth/verify:
+    get:
+      tags:
+        - Auth
+      description: get current user's info
+      responses:
+        200:
+          description: Get info success
+    post:
+      tags:
+        - Auth
+      description: get current user's info
+      parameter:
+        - name: token
+          in: body
+          description: user's token
+          required: true
+          schema: 
+            type: object
+            title: token
+            required:
+              - token
+            properties:
+              username:
+                type: string
+      responses:
+        200:
+          description: Get info success
   # Product
   #*******************************
   /products:

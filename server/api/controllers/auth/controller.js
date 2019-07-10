@@ -15,8 +15,8 @@ class AuthController {
                     var options = {
                         'expiresIn': 60*60*24
                         };
-                    let token = jwt.sign(userFound, 'sting', {expiresIn: 1000});
-                    res.json({token});
+                    let token = jwt.sign(userFound, 'sting', {expiresIn: 60 * 60 * 60 * 24 * 10});
+                    res.json({token: token, username: username});
                 }
                 else res.json({ success: false, message: "wrong password"})
                 // res.json({test: userFound.password});
@@ -27,10 +27,19 @@ class AuthController {
     }
 
     verify(req, res, next) {
-        jwt.verify('eyJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1ZDE1YmEzYjU2Y2NjNTQ2Nzg2YzgyNzMiLCJ1c2VybmFtZSI6Ikt1cm9Vc2FnaSIsInBhc3N3b3JkIjoiJDJiJDEyJGk3d056R3ZqWDNMTDU1U0JxTTZTZC5zWE1DNHlXUVN2c2Q2WFpCTTJHZWtDaHdQVXA5Q1hxIiwiYWdlIjozMDAwLCJwaG9uZSI6IjAxOTkyODU1OTEiLCJlbWFpbCI6InZpbmgxMjNAZ21haWwuY29tIiwibmFtZSI6InZpbmggbmd1eWVuIiwiX192IjowfQ.WFxk_9VC20NKgbM2XnQ5uZ4Zasv_g4o_TK3ls2nO9rA', 'sting', function(err, decoded) {
-            console.log(decoded)
-            req.user = decoded // bar
+         console.log(req.headers.token)
+        var info = jwt.verify(req.headers.token, 'sting', function(err, decoded) {
+            if (err)
+                console.log(err)
+            else
+                res.json(decoded);            
+            
           });
+
+            // if (info) {
+            //     req.user = decoded // bar
+            //     res.json(decoded)
+            // }
         next()
     }
 }
