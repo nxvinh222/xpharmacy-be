@@ -21,6 +21,7 @@ const UserSchmema = new Schema({
 	},
 	phone: String,
 	age: Number,
+	admin: Boolean
 })
 
 

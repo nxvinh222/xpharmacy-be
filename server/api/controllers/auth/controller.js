@@ -15,17 +15,14 @@ class AuthController {
                     var options = {
                         'expiresIn': 60*60*24
                         };
-<<<<<<< HEAD
                     var info = {
                         'username': userFound.username,
-                        'name': userFound.name
+                        'name': userFound.name,
+                        'id': userFound._id,
+                        'admin': userFound.admin
                     }
-                    let token = jwt.sign(info, 'sting', {expiresIn: 1000});
+                    let token = jwt.sign(info, 'sting', {expiresIn: 60 * 60 * 24 * 10});
                     res.json({token});
-=======
-                    let token = jwt.sign(userFound, 'sting', {expiresIn: 60 * 60 * 60 * 24 * 10});
-                    res.json({token: token, username: username});
->>>>>>> f5412fc427779586cd65eb87f86cba49645fdb69
                 }
                 else res.json({ success: false, message: "wrong password"})
                 // res.json({test: userFound.password});
@@ -36,12 +33,17 @@ class AuthController {
     }
 
     verify(req, res, next) {
-         console.log(req.headers.token)
-        var info = jwt.verify(req.headers.token, 'sting', function(err, decoded) {
+        // console.log(req.headers.token)
+        var token = req.headers.token;
+        jwt.verify(token, 'sting', function(err, decoded) {
             if (err)
-                console.log(err)
+                res.json({message: "access not allowed"})
             else
-                res.json(decoded);            
+                if (decoded)
+                {
+                    req.user = decoded;
+                    next();
+                }          
             
           });
 
@@ -49,7 +51,14 @@ class AuthController {
             //     req.user = decoded // bar
             //     res.json(decoded)
             // }
-        next()
+        // next();
+    }
+
+    admin(req, res) {
+        if (req.admin == true)
+            next()
+        else
+            res.json({message: "access not allowed, only admin"})  
     }
 }
 

@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 
 class UserController {
 	all(req, res) {
+		console.log(req.user);
 		userService.all().then(r => {
 			if (r) res.json(r);
 			else res.json({ success: false });
@@ -20,18 +21,17 @@ class UserController {
 
 	update(req, res) {
 		// res.json({ success: true })
-		userService.update(req.params.id).then(userFound => {
-			if (userFound) {
-				for (let key in req.body) {
-					let value = req.body[key];
-					if (value !== null)
-						userFound[key] = value;
-				}
-				userFound.save();
-				res.json(userFound);
-			}
-			else res.json({ success: false });
+		if (req.body.admin){
+			if (req.user.admin != true)
+				delete req.body.admin
+		}
+		userService.update(req.params.id, req.body)
+			.then(() => {		
+				res.json({success: true});
 		})
+			.catch(err => {
+				res.json({success: false, err: err})
+			})
 	}
 
 	create(req, res) {
