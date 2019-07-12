@@ -3,36 +3,20 @@ import Product from '../models/product';
 class ProductService {
 
 	all() {
-		return new Promise((resolve, rejects) => {
-			const products = Product.find();
-			resolve(products);
-		})
+		return Product.find();
 	}
 
 	byId(id) {
-		return new Promise((resolve, rejects) => {
-			const product = Product.findById(id);
-			resolve(product);
-		})
-
+		return Product.findById(id);
 	}
 
 	create(info) {
-		return new Promise((resolve, rejects) => {
-			const product = Product.create(info);
-			console.log(info);
-			resolve(product);			
-		})
+		return Product.create(info);
 	}
 
 	delete(id){
-		return new Promise ((resolve, rejects) =>{
-			const product = Product.findByIdAndDelete(id);
-			console.log(product);
-			resolve(product);
-		})
+		return Product.findByIdAndDelete(id);
 	}
-
 
 }
 

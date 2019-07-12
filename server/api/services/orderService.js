@@ -1,38 +1,22 @@
 import Order from '../models/order';
 
-class ProductService {
+class OrderService {
 
 	all() {
-		return new Promise((resolve, rejects) => {
-			const orders = Order.find();
-			resolve(orders);
-		})
+		return Order.find();
 	}
 
 	byId(id) {
-		return new Promise((resolve, rejects) => {
-			const order = Order.findById(id);
-			resolve(order);
-		})
-
+		return Order.findById(id);
 	}
 
 	create(info) {
-		return new Promise((resolve, rejects) => {
-			const order = Order.create(info);
-			console.log(info);
-			resolve(order);			
-		})
+		return Order.create(info);		
 	}
 
 	delete(id){
-		return new Promise ((resolve, rejects) =>{
-			const order = Order.findByIdAndDelete(id);
-			console.log(order);
-			resolve(order);
-		})
+		return Order.findByIdAndDelete(id);
 	}
-
 
 }
 

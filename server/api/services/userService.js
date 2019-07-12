@@ -3,40 +3,20 @@ import User from '../models/user';
 class UserService {
 
 	all() {
-		return new Promise((resolve, rejects) => {
-			const users = User.find();
-			resolve(users);
-		})
-		// User.find();
+		return User.find();
 	}
 
 	byId(id) {
-		return new Promise((resolve, rejects) => {
-			const user = User.findById(id);
-			resolve(user);
-		})
-
+		return User.findById(id);
 	}
 
 	update(id) {
-		return new Promise((resolve, reject) => {
-			const user = User.findById(id);
-			resolve(user);
-		})
+		return User.findById(id);
 	}
-
 
 	create(info) {
-		return new Promise((resolve, rejects) => {
-			const user = User.create(info);
-			console.log(info);
-			// if (err) rejects(err);
-			resolve(user);			
-		})
+		return User.create(info);
 	}
-
-
-
 
 }
 
