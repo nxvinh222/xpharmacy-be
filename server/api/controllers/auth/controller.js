@@ -15,7 +15,11 @@ class AuthController {
                     var options = {
                         'expiresIn': 60*60*24
                         };
-                    let token = jwt.sign(userFound, 'sting', {expiresIn: 1000});
+                    var info = {
+                        'username': userFound.username,
+                        'name': userFound.name
+                    }
+                    let token = jwt.sign(info, 'sting', {expiresIn: 1000});
                     res.json({token});
                 }
                 else res.json({ success: false, message: "wrong password"})
