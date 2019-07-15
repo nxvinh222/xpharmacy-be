@@ -54,11 +54,11 @@ class AuthController {
         // next();
     }
 
-    admin(req, res) {
-        if (req.admin == true)
+    admin(req, res, next) {
+        if (req.user.admin == true)
             next()
         else
-            res.json({message: "access not allowed, only admin"})  
+            res.json({message: "access not allowed, only admins"})  
     }
 }
 
