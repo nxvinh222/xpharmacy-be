@@ -15,8 +15,14 @@ class AuthController {
                     var options = {
                         'expiresIn': 60*60*24
                         };
-                    let token = jwt.sign(userFound, 'sting', {expiresIn: 60 * 60 * 60 * 24 * 10});
-                    res.json({token: token, username: username});
+                    var info = {
+                        'username': userFound.username,
+                        'name': userFound.name,
+                        'id': userFound._id,
+                        'admin': userFound.admin
+                    }
+                    let token = jwt.sign(info, 'sting', {expiresIn: 60 * 60 * 24 * 10});
+                    res.json({token});
                 }
                 else res.json({ success: false, message: "wrong password"})
                 // res.json({test: userFound.password});
@@ -27,12 +33,17 @@ class AuthController {
     }
 
     verify(req, res, next) {
-         console.log(req.headers.token)
-        var info = jwt.verify(req.headers.token, 'sting', function(err, decoded) {
+        // console.log(req.headers.token)
+        var token = req.headers.token;
+        jwt.verify(token, 'sting', function(err, decoded) {
             if (err)
-                console.log(err)
+                res.json({message: "access not allowed"})
             else
-                res.json(decoded);            
+                if (decoded)
+                {
+                    req.user = decoded;
+                    next();
+                }          
             
           });
 
@@ -40,7 +51,14 @@ class AuthController {
             //     req.user = decoded // bar
             //     res.json(decoded)
             // }
-        next()
+        // next();
+    }
+
+    admin(req, res, next) {
+        if (req.user.admin == true)
+            next()
+        else
+            res.json({message: "access not allowed, only admins"})  
     }
 }
 

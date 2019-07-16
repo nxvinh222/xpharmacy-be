@@ -10,8 +10,8 @@ class UserService {
 		return User.findById(id);
 	}
 
-	update(id) {
-		return User.findById(id);
+	update(id, data) {
+		return User.findOneAndUpdate({_id: id}, data);
 	}
 
 	create(info) {

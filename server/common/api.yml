@@ -53,6 +53,9 @@ definitions:
       name:
         type: string
         example: vinh nguyen
+      admin:
+        type: boolean
+        example: true
       # cart:
       #   type: array
       #   example: [123, 456]
@@ -210,6 +213,8 @@ paths:
               name:
                 type: string
                 example: vinh nguyen
+              admin:
+                type: boolean
         
         - name: id
           in: path

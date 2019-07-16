@@ -52,7 +52,7 @@ export default class ExpressServer {
     if (err) console.log(err)
     else
     console.log("CONNECT SUCCESS!")
-});
+}, { useNewUrlParser: true });
 
   }
 
