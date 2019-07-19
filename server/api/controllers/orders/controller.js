@@ -6,18 +6,21 @@ export class OrderController {
   }
 
   byId(req, res) {
-    ProductService.byId(req.params.id).then(r => {
+    OrderService.byId(req.params.id).then(r => {
       if (r) res.json(r);
       else res.status(404).end();
     });
   }
 
   create(req, res) {
-    OrderService.create(req.body).then(r =>
+    OrderService.create(req.body).then(r =>{
+      // OrderService.populate();
       res
         .status(201)
         .location(`/api/v1/orders/${r.id}`)
         .json(r)
+    }
+      
     );
   }
 
