@@ -115,7 +115,7 @@ definitions:
         type: string
         example: 454 De La Thanh
       date:
-        type: date
+        type: string
         example: 12/7/2019
       total:
         type: number
