@@ -3,6 +3,7 @@ import userRouter from './api/controllers/users/router';
 import productRouter from './api/controllers/products/router';
 import authRouter from './api/controllers/auth/router';
 import uploadRouter from './api/controllers/imageUploads/router';
+import orderRouter from './api/controllers/orders/router';
 import auth from './api/controllers/auth/controller';
 import cors from 'cors';
 
@@ -18,6 +19,7 @@ export default function routes(app) {
   app.use('/api/v1/imageUploads', uploadRouter)
   app.use('/api/v1/auth',authRouter);
   app.use('/api/v1/products', productRouter);
+  app.use('/api/v1/orders', orderRouter);
   // app.get('/api/v1/login', (req, res) => {
   //   res.json({a:"aaaa"});
     
