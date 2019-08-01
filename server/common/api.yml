@@ -166,6 +166,20 @@ paths:
       responses:
         201:
           description: get picture link
+  /prescriptionUploads:
+    post:
+      tags:
+        - Users
+      description: Get picture's link
+      parameters:
+        - name: file
+          in: formData
+          description: file to upload
+          required: false
+          type: file
+      responses:
+        201:
+          description: get picture link
         
   /users/{id}:
     get:
