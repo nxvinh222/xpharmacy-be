@@ -42,6 +42,7 @@ class AuthController {
                 if (decoded)
                 {
                     req.user = decoded;
+                    res.json(decoded);
                     next();
                 }          
             

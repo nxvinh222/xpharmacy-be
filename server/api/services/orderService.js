@@ -3,7 +3,7 @@ import Order from '../models/order';
 class OrderService {
 
 	all() {
-		return Order.find();
+		return Order.find().populate('products');
 	}
 
 	byId(id) {

@@ -101,7 +101,7 @@ definitions:
     properties:
       products:
         type: array
-        example: []
+        example: ["123", "456"]
       name:
         type: string
         example: Vinh Nguyen
