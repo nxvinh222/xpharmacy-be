@@ -6,4 +6,5 @@ class UploadsController{
     }
 }
 
+
 export default new UploadsController();

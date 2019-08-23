@@ -346,6 +346,11 @@ paths:
           required: true
           schema: 
             $ref: "#/definitions/ProductBody"
+        - name: file
+          in: formData
+          description: file to upload
+          required: false
+          type: file
       responses:
         200:
           description: Return all Products
