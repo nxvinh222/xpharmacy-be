@@ -95,9 +95,7 @@ definitions:
       - name
       - phone
       - address
-      - date
       - total
-      - status
     properties:
       products:
         type: array
@@ -455,7 +453,7 @@ paths:
         - name: user
           in: body
           description: create an order
-          required: true
+          required: false
           schema: 
             $ref: "#/definitions/OrderBody"
       responses:
