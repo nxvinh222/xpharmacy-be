@@ -6,6 +6,7 @@ import uploadRouter from './api/controllers/imageUploads/router';
 import prescriptionRouter from './api/controllers/prescriptionUploads/router';
 import orderRouter from './api/controllers/orders/router';
 import auth from './api/controllers/auth/controller';
+
 import cors from 'cors';
 
 export default function routes(app) {

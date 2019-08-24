@@ -19,9 +19,9 @@ const upload = multer({ //multer settings
         }
         callback(null, true)
     },
-    // limits: {
-    //     fileSize: 1024 * 1024
-    // }
+    limits: {
+        fileSize: 1024 * 1024 * 1024
+    }
 })
 
 export default express
