@@ -3,11 +3,11 @@ import Order from '../models/order';
 class OrderService {
 
 	all() {
-		return Order.find().populate('products');
+		return Order.find();
 	}
 
 	byId(id) {
-		return Order.findById(id).populate('products');
+		return Order.findById(id);
 	}
 
 	create(info) {
