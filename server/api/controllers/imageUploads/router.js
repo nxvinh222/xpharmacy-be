@@ -21,9 +21,14 @@ const upload = multer({ //multer settings
     },
     limits: {
         fileSize: 1024 * 1024 * 1024
-    }
-})
+    },
+}).single('image')
 
 export default express
     .Router()
-    .post('/', upload.single('file'), controller.upload)
+    .post('/', (req, res, next) =>{
+        upload(req, res, err => {
+            if (err)
+                console.log(err.field)
+            next()
+        })}, controller.upload)
