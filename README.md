@@ -1,6 +1,6 @@
 # xpharmacy
 
-My cool app
+Backend of http://xpharmacyx.herokuapp.com/
 
 ## Get Started
 
